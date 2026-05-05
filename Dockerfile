@@ -9,6 +9,6 @@ RUN apt-get update --fix-missing && \
     python3 -m pip install --upgrade pip && \
     pip install -r requirements.txt
 
-EXPOSE 443
+EXPOSE 8080
 
 CMD ["python3", "application_controller.py"]
