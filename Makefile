@@ -9,7 +9,7 @@ build:
 	@docker build -t sotiredrn .
 
 run:
-	@docker run -itdp 8000:8000  --rm --name aaaaa sotiredrn
+	@docker run -itdp 443:8000  --rm --name aaaaa sotiredrn
 
 full: build run
 
