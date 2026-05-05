@@ -1,0 +1,5 @@
+You can get the app working in a container on your own computer by running 'make full'
+Be sure to have docker desktop open for that.
+
+The online version hosted by google cloud is here: https://day-ruined-601456201767.europe-west1.run.app/
+It has the auto-deploy stuff
