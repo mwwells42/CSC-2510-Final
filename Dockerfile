@@ -1,11 +1,14 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
-COPY /app /app
+WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y sudo curl git nano && \
-    adduser --quiet --disabled-password 
-    --shell /bin/bash --home /home/devuser 
-    --gecos "User" devuser && \
-    echo "devuser:<a href="mailto://p@ssword1">p@ssword1</a>" | 
-    chpasswd &&  usermod -aG sudo devuser
+COPY . .
+
+RUN apt-get update --fix-missing && \
+    apt-get install -y python3 python3-pip && \
+    python3 -m pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+EXPOSE 8000
+
+CMD ["python3", "application_controller.py"]

@@ -1,12 +1,18 @@
-setup:
+setuptest:
 	python -m pip install --upgrade pip
 	pip install -r requirements.txt
 
-test:
+test: setuptest
 	python -m unittest discover tests -v
 
-run: setup
-	python application_controller.py
+build:
+	@docker build -t sotiredrn .
+
+run:
+	@docker run -itdp 8000:8000  --rm --name aaaaa sotiredrn
+
+full: build run
 
 clean:
-	rm -rf __pycache__
+	@docker stop aaaaa
+	@docker image rm sotiredrn
